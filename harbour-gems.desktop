@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Name=harbour-gems
+Name=Gems
 Icon=harbour-gems
 Exec=harbour-gems
 
