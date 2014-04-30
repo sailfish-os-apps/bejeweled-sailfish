@@ -19,7 +19,6 @@ SOURCES += src/harbour-gems.cpp
 OTHER_FILES += qml/harbour-gems.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
-    qml/pages/SecondPage.qml \
     rpm/harbour-gems.changes.in \
     rpm/harbour-gems.spec \
     rpm/harbour-gems.yaml \
@@ -33,7 +32,9 @@ OTHER_FILES += qml/harbour-gems.qml \
     qml/components/gem1.png \
     qml/components/Playground.qml \
     qml/components/Gem.qml \
-    translations/harbour-gems.ts
+    translations/harbour-gems.ts \
+    harbour-gems.png \
+    harbour-gems.svg
 
 # to disable building translations every time, comment out the
 # following CONFIG line

@@ -2,11 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>FirstPage</name>
+    <name>CoverPage</name>
     <message>
-        <source>Show Page 2</source>
+        <source>%1 pts</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>FirstPage</name>
     <message>
         <source>Gems</source>
         <translation type="unfinished"></translation>
@@ -15,11 +18,12 @@
         <source>A clone of the popular Bejeweled game.</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>SecondPage</name>
     <message>
-        <source>Nested Page</source>
+        <source>Restart game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 pts</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

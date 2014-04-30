@@ -1,9 +1,10 @@
-import QtQuick 2.0;
-import Sailfish.Silica 1.0;
-import "../components";
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+import "../components"
 
 Page {
     id: page;
+    Component.onCompleted: { currentPlayground = playground; }
 
     SilicaFlickable {
         anchors.fill: parent;
@@ -12,8 +13,8 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTr ("Show Page 2");
-                onClicked: pageStack.push (secondPage);
+                text: qsTr ("Restart game");
+                onClicked: { playground.reset (); }
             }
         }
         Column {
@@ -22,13 +23,19 @@ Page {
             spacing: Theme.paddingLarge;
 
             PageHeader {
-                title: qsTr("Gems");
+                title: qsTr ("Gems");
             }
             Label {
                 x: Theme.paddingLarge;
                 text: qsTr ("A clone of the popular Bejeweled game.");
                 color: Theme.secondaryHighlightColor;
                 font.pixelSize: Theme.fontSizeSmall;
+            }
+            Label {
+                text: qsTr ("%1 pts").arg (playground.score);
+                color: Theme.primaryColor;
+                font.pixelSize: Theme.fontSizeHuge;
+                anchors.horizontalCenter: parent.horizontalCenter;
             }
         }
     }

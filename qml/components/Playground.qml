@@ -1,5 +1,5 @@
-import QtQuick 2.0;
-import Sailfish.Silica 1.0;
+import QtQuick 2.0
+import Sailfish.Silica 1.0
 
 Item {
     id: playground;
@@ -63,6 +63,7 @@ Item {
                             board [gemIdx] = null;
                         }
                         componentDestroy.createObject (playground, { "gemsFromGroup" : gemsFromGroup });
+                        score += (gemsIdxList.length * 10); // FIXME : score computation
                     }
                 }
                 else {
@@ -79,6 +80,7 @@ Item {
         }
     }
 
+    property int  score   :0;
     property int  first   : -1;
     property int  second  : -1;
     property int  divs    : 8;
@@ -106,9 +108,22 @@ Item {
         Component { Gem { type: 3; } }, // white triangle
         Component { Gem { type: 4; } }, // orange star
         Component { Gem { type: 5; } }, // green octogon
-        Component { Gem { type: 6; } }  // blue diamond
+        Component { Gem { type: 6; } }, // blue diamond
+        Component { Gem { type: 7; } }  // turquoise egg
     ]
 
+    function reset ()  {
+        for (var idx = 0; idx < board.length; idx++) {
+            var gem = board [idx];
+            if (gem) {
+                gem.destroy ();
+            }
+        }
+        board = [];
+        score = 0;
+        playground.state = "filling";
+        stateMachine.restart ();
+    }
     function removeDuplicates (array) { // pass an Array as param
         var ret = [];
         for (var idx = 0; idx < array.length; idx++) {

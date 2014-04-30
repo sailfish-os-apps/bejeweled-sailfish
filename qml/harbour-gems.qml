@@ -1,11 +1,14 @@
-import QtQuick 2.0;
-import Sailfish.Silica 1.0;
-import "pages";
-import "cover";
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+import "components"
+import "pages"
+import "cover"
 
 ApplicationWindow {
     cover: coverPage;
     initialPage: firstPage;
+
+    property Playground currentPlayground : null;
 
     Component {
         id: coverPage;
@@ -16,11 +19,6 @@ ApplicationWindow {
         id: firstPage;
 
         FirstPage { }
-    }
-    Component {
-        id: secondPage;
-
-        SecondPage { }
     }
 }
 
