@@ -37,6 +37,36 @@ Page {
                 font.pixelSize: Theme.fontSizeHuge;
                 anchors.horizontalCenter: parent.horizontalCenter;
             }
+            Label {
+                id: lblTime;
+                text: {
+                    var mins = Math.floor (playground.time / 60);
+                    var secs = (playground.time % 60);
+                    var ret  = "";
+                    if (mins) {
+                        ret += "%1 %2  ".arg (mins).arg (mins > 1 ? qsTr ("mins") : qsTr ("min"));
+                    }
+                    ret += "%1 %2".arg (secs).arg (secs > 1 ? qsTr ("secs") : qsTr ("sec"));
+                    return ret;
+                }
+                color: Theme.primaryColor;
+                font.pixelSize: Theme.fontSizeLarge;
+                anchors.horizontalCenter: parent.horizontalCenter;
+                onTextChanged: SequentialAnimation {
+                    PropertyAnimation {
+                        target: lblTime;
+                        property: "scale";
+                        to: 1.25;
+                        duration: (playground.time > 4 * 60 ? 50 : 0);
+                    }
+                    PropertyAnimation {
+                        target: lblTime;
+                        property: "scale";
+                        to: 1.00;
+                        duration: (playground.time > 4 * 60 ? 50 : 0);
+                    }
+                }
+            }
         }
     }
     Playground {

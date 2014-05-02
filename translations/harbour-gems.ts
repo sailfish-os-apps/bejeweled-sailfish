@@ -26,5 +26,21 @@
         <source>%1 pts</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>mins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>secs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sec</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

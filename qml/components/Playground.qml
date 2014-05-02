@@ -13,7 +13,8 @@ Item {
         State { name: "swapping"; },
         State { name: "cleaning"; },
         State { name: "sliding";  },
-        State { name: "filling";  }
+        State { name: "filling";  },
+        State { name: "timesup";  }
     ]
     onStateChanged: { console.log ("STATE", state); }
 
@@ -21,6 +22,20 @@ Item {
         color: "white";
         opacity: 0.05;
         anchors.fill: parent;
+    }
+    Timer {
+        id: secsCounter;
+        repeat: true;
+        running: true;
+        interval: 1000;
+        onTriggered: {
+            time++;
+            if (time === 5 * 60) {
+                secsCounter.stop ();
+                playground.state = "timesup";
+                stateMachine.restart ();
+            }
+        }
     }
     Timer {
         id: stateMachine;
@@ -63,7 +78,7 @@ Item {
                             board [gemIdx] = null;
                         }
                         componentDestroy.createObject (playground, { "gemsFromGroup" : gemsFromGroup });
-                        score += (gemsIdxList.length * 10); // FIXME : score computation
+                        score += points [gemsIdxList.length];
                     }
                 }
                 else {
@@ -77,17 +92,20 @@ Item {
             else if (playground.state === "filling") {
                 fillEmptyCells ();
             }
+            else if (playground.state === "timesup") {
+                // TODO : show message to propose new game and save highscore
+            }
         }
     }
 
     property int  score   :0;
+    property int  time    :0;
     property int  first   : -1;
     property int  second  : -1;
     property int  divs    : 8;
     property int  total   : (divs * divs);
     property real padding : 2;
     property var  board   : [];
-
     property var  lines   : {
         var ret = [];
         for (var col = 0; col < divs; col++) {
@@ -101,7 +119,14 @@ Item {
         console.debug ("lines=", JSON.stringify (ret));
         return ret;
     }
-
+    property var  points   : {
+        3 : 20,
+        4 : 50,
+        5 : 100,
+        6 : 180,
+        7 : 250,
+        8 : 400
+    };
     property list<Component> gems : [
         Component { Gem { type: 1; } }, // yellow circle
         Component { Gem { type: 2; } }, // red square
@@ -113,6 +138,8 @@ Item {
     ]
 
     function reset ()  {
+        secsCounter.stop ();
+        stateMachine.stop ();
         for (var idx = 0; idx < board.length; idx++) {
             var gem = board [idx];
             if (gem) {
@@ -121,8 +148,10 @@ Item {
         }
         board = [];
         score = 0;
+        time  = 0;
         playground.state = "filling";
         stateMachine.restart ();
+        secsCounter.restart ();
     }
     function removeDuplicates (array) { // pass an Array as param
         var ret = [];
