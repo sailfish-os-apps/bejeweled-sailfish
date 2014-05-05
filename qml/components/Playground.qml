@@ -29,8 +29,8 @@ Item {
         running: true;
         interval: 1000;
         onTriggered: {
-            time++;
-            if (time === 5 * 60) {
+            time--;
+            if (time === 0) {
                 secsCounter.stop ();
                 playground.state = "timesup";
                 stateMachine.restart ();
@@ -99,7 +99,7 @@ Item {
     }
 
     property int  score   :0;
-    property int  time    :0;
+    property int  time    : 300;
     property int  first   : -1;
     property int  second  : -1;
     property int  divs    : 8;

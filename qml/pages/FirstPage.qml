@@ -57,13 +57,13 @@ Page {
                         target: lblTime;
                         property: "scale";
                         to: 1.25;
-                        duration: (playground.time > 4 * 60 ? 50 : 0);
+                        duration: (playground.time < 60 ? 50 : 0);
                     }
                     PropertyAnimation {
                         target: lblTime;
                         property: "scale";
                         to: 1.00;
-                        duration: (playground.time > 4 * 60 ? 50 : 0);
+                        duration: (playground.time < 60 ? 50 : 0);
                     }
                 }
             }
