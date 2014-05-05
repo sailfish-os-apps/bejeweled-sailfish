@@ -13,3 +13,4 @@ rpm/*.spec
 moc_*.cpp
 *.o
 qrc_*.cpp
+translations/*.ts

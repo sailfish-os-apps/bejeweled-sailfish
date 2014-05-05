@@ -32,13 +32,12 @@ OTHER_FILES += qml/harbour-gems.qml \
     qml/components/gem1.png \
     qml/components/Playground.qml \
     qml/components/Gem.qml \
-    translations/harbour-gems.ts \
     harbour-gems.png \
     harbour-gems.svg
 
 # to disable building translations every time, comment out the
 # following CONFIG line
-CONFIG += sailfishapp_i18n
+#CONFIG += sailfishapp_i18n
 
-TRANSLATIONS +=
+#TRANSLATIONS +=
 
