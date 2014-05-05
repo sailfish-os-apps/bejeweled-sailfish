@@ -24,6 +24,7 @@ OTHER_FILES += qml/harbour-gems.qml \
     rpm/harbour-gems.yaml \
     harbour-gems.desktop \
     qml/components/gems.svg \
+    qml/components/gem7.png \
     qml/components/gem6.png \
     qml/components/gem5.png \
     qml/components/gem4.png \
